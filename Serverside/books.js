@@ -92,7 +92,10 @@ app.put('/books/updatequantity/:id/:quantity',function(req,res){
 
 	}
 });
+/*
 
+Update books quantity if it would be return
+*/
 app.put('/books/quantityupdate/:id',function(req,res){
 	
 		booksmodel.find({_id:req.params.id},function(err,result){
@@ -103,7 +106,8 @@ app.put('/books/quantityupdate/:id',function(req,res){
 			var quantityvalue=result[0].quantity;
 			booksmodel.update({_id:req.params.id},
 				{$set:{
-					'quantity':quantityvalue+1
+					'quantity':quantityvalue+1,
+					'status':'Available'
 				}},function(err,result){
 					if(err){
 						console.log(err);
