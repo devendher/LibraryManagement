@@ -101,7 +101,7 @@ $scope.login=function(username,password)
       $cookieStore.put('userrole1',$scope.userrole);
       $cookieStore.put('userid',$rootScope.userid)
       //$cookieStore.put('username',$scope.username);
-      $location.path("dashboard");
+      $location.path("/dashboard/dashhome");
 		}
      });
 };
@@ -145,6 +145,11 @@ $scope.Adminregistration=function(){
                   });
 
       }
+      $timeout(function(){
+        $state.reload();
+        $scope.$apply();
+
+      },0)
 
     });
      

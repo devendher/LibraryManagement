@@ -1,8 +1,8 @@
 app.controller('transactioncontroller',['$scope','$http','$location','$cookieStore','$modal','$log','$rootScope','ModalService','toastr','BooksService','$timeout','$state','TransactionService',function($scope,$http,$location,$cookieStore,$modal,$log,$rootScope,ModalService,toastr,BooksService,$timeout,$state,TransactionService)
 {
-
-	$scope.status=[{name:'Borrowed'},{name:"Returned"}];
-	var getuser=$cookieStore.get('username');
+$scope.spinnershow=false;
+$scope.status=[{name:'Borrowed'},{name:"Returned"}];
+var getuser=$cookieStore.get('username');
 var getuserid=$cookieStore.get('userid');
 var getuserrole=$cookieStore.get('userrole1');
 if(!getuser){
@@ -42,11 +42,19 @@ else{
 	};
 
 $scope.getalltransactions=function(){
+	$scope.spinnershow=true;
 	TransactionService.gatalltransactions().then(function(data){
 	$scope.transactions=data;
 	$scope.curPage = 0;
     $scope.pageSize =5;
+    if($scope.transactions.length<0){
+    	toastr.success('No Data found!', 'Sorry!', {
+                    closeButton: true,
+                    closeHtml: '<button> <span class="glyphicon glyphicon-remove"></span></button>'
+                  });
 
+    }
+$scope.spinnershow=false;
 
   $scope.numberOfPages = function() {
         return Math.ceil($scope.transactions.length / $scope.pageSize);

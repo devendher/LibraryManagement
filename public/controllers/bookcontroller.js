@@ -1,6 +1,6 @@
 app.controller('bookcontroller',['$scope','$http','$location','$cookieStore','$modal','$log','$rootScope','ModalService','toastr','BooksService','$timeout','$state',function($scope,$http,$location,$cookieStore,$modal,$log,$rootScope,ModalService,toastr,BooksService,$timeout,$state)
 {
-
+$scope.spinnershow=false;
 var getuser=$cookieStore.get('username');
 var getuserid=$cookieStore.get('userid');
 var getuserrole=$cookieStore.get('userrole1');
@@ -118,6 +118,7 @@ var modalInstance = $modal.open({
 //get all books from service
 
 $scope.Getallbooks=function(){
+  $scope.spinnershow=true;
 
 BooksService.gatallbooksdata().then(function(data){
 	$scope.block_table_show=true;
@@ -129,11 +130,8 @@ if($scope.books.length<0){
                     closeButton: true,
                     closeHtml: '<button> <span class="glyphicon glyphicon-remove"></span></button>'
                   });
-      
-
-
-}
-
+  }
+ $scope.spinnershow=false;
 
   $scope.numberOfPages = function() {
         return Math.ceil($scope.books.length / $scope.pageSize);

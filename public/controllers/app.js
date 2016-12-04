@@ -33,6 +33,12 @@ app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
 	        	templateUrl:"views/Dashboard/dashboard.html",
 	        	controller:"dashboardcontroller"
 	        })
+	        .state('dashboard.home',{
+	        	url:'/dashhome',
+	        	templateUrl:"views/Dashboard/dashboardhome.html",
+	        	controller:"dashboardcontroller"
+	        	
+	        })
 	        .state('dashboard.changepassword',{
 	        	url:'/changepassword',
 	        	templateUrl:"views/changepassword.html",
