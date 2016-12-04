@@ -12,7 +12,7 @@ var transactions= new Schema({
 	contact:{type:Number},
 	IssueDate:{type:Date,default:Date.now},
 	DueDate:{type:Date,default:newdate},
-	status:{type:String,default:'Barrowed'}
+	status:{type:String,default:'Borrowed'}
 	
 });
 
