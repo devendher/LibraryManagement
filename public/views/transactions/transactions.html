@@ -41,7 +41,7 @@
       <td ng-click="order('IssueDate')">IssueDate<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
       <td ng-click="order('DueDate')">DueDate<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
       <td ng-click="order('status')">Status<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
-      <td> Barrow</td>
+      <td> Borrow</td>
       <td ng-show="onlyowner">Delete</td>
       </tr>
   </thead>
@@ -54,8 +54,8 @@
      <td>{{t.email}}</td>
      <td>{{t.bookid[0].name}}</td>
      <td>{{t.bookid[0].author}}</td>
-     <td>{{t.IssueDate}}</td>
-    <td>{{t.DueDate }}</td>
+     <td>{{t.IssueDate | date:'longDate'}}</td>
+    <td>{{t.DueDate | date:'longDate' }}</td>
     <td>{{t.status}}</td>
     <td>
      <button  class='btn btn-primary' ng-disabled="{{t.status=='Returned'}}" ng-click="Returned(t._id,t.bookid[0]._id)">

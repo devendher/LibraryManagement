@@ -1,7 +1,7 @@
 app.controller('transactioncontroller',['$scope','$http','$location','$cookieStore','$modal','$log','$rootScope','ModalService','toastr','BooksService','$timeout','$state','TransactionService',function($scope,$http,$location,$cookieStore,$modal,$log,$rootScope,ModalService,toastr,BooksService,$timeout,$state,TransactionService)
 {
 
-	$scope.status=[{name:'Barrowed'},{name:"Returned"}];
+	$scope.status=[{name:'Borrowed'},{name:"Returned"}];
 	var getuser=$cookieStore.get('username');
 var getuserid=$cookieStore.get('userid');
 var getuserrole=$cookieStore.get('userrole1');

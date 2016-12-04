@@ -51,7 +51,7 @@
       <td ng-click="order('booktype')">Book Type<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
       <td ng-click="order('quantity')">Quantity<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
       <td ng-show="onlyowner" ng-click="order('status')">Status<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
-      <td> Barrow</td>
+      <td> Borrow</td>
       <td ng-show="onlyowner">Delete</td>
       </tr>
   </thead>
@@ -67,7 +67,7 @@
     <td>{{b.status}}</td>
     <td ng-show="onlyowner">
      <button  class='btn btn-primary' ng-disabled='{{b.quantity<=0}}' ng-click="open($index+(curPage * pageSize))">
-       Barrow
+       Borrow
      </button>
      </td>
      <td ng-show="onlyowner">
@@ -124,26 +124,26 @@
             </div>
         </div>
         <div class="row">    
-           <div class="col-sm-4">
+           <div class="col-sm-6">
              <div class="form-group" ng-class="{ 'has-error': modalForm.author.$invalid }">
                <label>Author</label>
                <input name="author" ng-model = "books.author" class="form-control" type = "text" placeholder="Name" title=" author" id="author" required/>
               </div>
            </div> 
-           <div class="col-sm-4">
+           <div class="col-sm-6">
              <div class="form-group" ng-class="{ 'has-error': modalForm.quantity.$invalid }">
                <label>Quantity</label>
                <input name="quantity" ng-model = "books.quantity" class="form-control" type = "number" placeholder="quantity" title=" quantity" id="quantity" required/>
              </div>
            </div>
 
-           <div class="col-sm-4">
+          <!-- <div class="col-sm-4">
               <div class="form-group" ng-class="{ 'has-error': modalForm.status.$invalid }">
                 <label>Availability status</label>
                 <select ng-model="selectedavailability.name" class="form-control" id="status" ng-options="status.name for status in status " ng-change="statuschanged(selectedavailability.name)" required>
                     </select>
               </div>
-           </div>
+           </div>-->
         </div>
 
           
@@ -158,7 +158,7 @@
 
 
 
-<!--Barrow books template -->
+<!--Borrow books template -->
 <script type="text/ng-template" id="barrowbooks.html">
 
         <div class="modal-header">
@@ -218,7 +218,7 @@
            <div class="col-sm-6">
              <div class="form-group" ng-class="{ 'has-error': modalForm.contact.$invalid }">
                <label>contact</label>
-               <input name="contact" ng-model = "books.contact" class="form-control" type = "number" placeholder="contact" title=" contact" id="contact"  required/>
+               <input name="contact" ng-model = "books.contact" class="form-control" type = "number" ng-maxlength="10" ng-minlength="10" placeholder="contact" title=" contact" id="contact"  required/>
              </div>
            </div>
 
@@ -236,22 +236,24 @@
            
          </div>
          <div class="col-sm-6">
-          <div class="form-group" ng-class="{ 'has-error': modalForm.duedate.$invalid }">
+          <div class="form-group">
                 <label>Due Date</label>
                 
-                 <input name="Date" ng-model = "books.duedate" class="form-control" type = "date" placeholder="mm/dd/yyyy" title=" date" id="date"  required/>
+                 <input name="Date" ng-model = "books.duedate" class="form-control" type = "date" placeholder="mm/dd/yyyy" title=" date" id="date"/>
 
               </div>
            
          </div>
           
         </div>
+        <hr/>
+        <p>Default due date should be considered 5 days from issuing date</p>
 
           
       </form>
       </div>
       <div class="modal-footer">
-          <button class="btn btn-primary"  ng-click="ok()">Issue Book</button>
+          <button class="btn btn-primary" ng-disabled="modalForm.$invalid" ng-class="{ 'disabled': modalForm.$invalid }"ng-click="ok()">Issue Book</button>
           <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
       </div>
     </script>
