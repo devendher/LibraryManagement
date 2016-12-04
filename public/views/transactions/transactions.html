@@ -1,0 +1,88 @@
+<div class='row' style='padding-left: 5em;padding-top:  2em;'>
+  
+</div>
+<form class="form-inline" role="form">
+        
+        <div class="form-group">
+            <label style="padding-left:2em;"></label>
+            <label class="control-label" for="month">Check By Status</label>
+            <label style="padding-left:2em;"></label>
+            <select ng-model="selectedstatus" class="form-control" id="status" ng-options="status.name for status in status " ng-change="statuschanged1(selectedstatus)">
+            <option value="">Select</option>
+            </select> 
+        </div>
+       
+        <div class="form-group">
+            <label style="padding-left:2em;"></label>
+            <button class='btn btn-primary' ng-click="searchtransactions(selectedstatus.name)">Search
+            </button>
+        </div>
+        <div class="form-group">
+            <label style="padding-left:2em;"></label>
+            <button class="btn btn-success btn-sm" ng-click="getalltransactions()">
+            <span class="glyphicon glyphicon-plus"></span> Search All
+            </button>
+        </div>
+        
+    </form>
+
+<hr/>
+
+<div>
+  <table class="table table-bordered table-striped">
+  <thead style="color:blue;">
+    <tr>
+      <td>#</td>
+      <td ng-click="order('username')">Name<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
+      <td ng-click="order('contact')">Contact<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
+      <td ng-click="order('email')">Email<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
+      <td ng-click="order('bookid.name')">Book Name<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
+      <td ng-click="order('bookid.author')">Author<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
+      <td ng-click="order('IssueDate')">IssueDate<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
+      <td ng-click="order('DueDate')">DueDate<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
+      <td ng-click="order('status')">Status<span class="glyphicon glyphicon-sort-by-alphabet"></span></td>
+      <td> Barrow</td>
+      <td ng-show="onlyowner">Delete</td>
+      </tr>
+  </thead>
+    <!--<tr ng-repeat="b in books"> orderBy:orderByName track by $index -->
+  <!--<tr ng-repeat="b in books | orderBy:predicate:reverse| | pagination: curPage * pageSize | limitTo: pageSize| filter:search">-->
+  <tr ng-repeat="t in transactions|filter:search| pagination: curPage * pageSize | limitTo: pageSize">
+    <td>{{$index+1 + (curPage * pageSize) }}</td>
+     <td>{{t.username}}</td>
+     <td>{{t.contact}}</td>
+     <td>{{t.email}}</td>
+     <td>{{t.bookid[0].name}}</td>
+     <td>{{t.bookid[0].author}}</td>
+     <td>{{t.IssueDate}}</td>
+    <td>{{t.DueDate }}</td>
+    <td>{{t.status}}</td>
+    <td>
+     <button  class='btn btn-primary' ng-disabled="{{t.status=='Returned'}}" ng-click="Returned(t._id,t.bookid[0]._id)">
+       Returned
+     </button>
+     </td>
+     <td ng-show="onlyowner">
+    <button  class='btn btn-danger' data-title="Delete" ng-click="deletetransaction(t._id)"><span class="glyphicon glyphicon-trash"></span></button>
+    </td>
+  </tr>
+
+</table>
+
+<div class="pagination pagination-centered" ng-show="transactions.length">
+  <ul class="pagination-controle pagination">
+     <li>
+        <button type="button" class="btn btn-primary" ng-disabled="curPage == 0"
+        ng-click="curPage=curPage-1"> &lt; PREV</button>
+     </li>
+     <li>
+        <span>Page {{curPage + 1}} of {{ numberOfPages() }}</span>
+     </li>
+     <li>
+        <button type="button" class="btn btn-primary"
+        ng-disabled="curPage >= books.length/pageSize - 1"
+        ng-click="curPage = curPage+1">NEXT &gt;</button>
+     </li>
+  </ul>
+</div>
+</div>

@@ -1,0 +1,132 @@
+
+<div class="navbar navbar-inverse navbar-fixed-top navbarhight" role="navigation">  
+  
+  <div class="navbar-header">
+        <div class="navbar-header">
+        
+
+      <a class="navbar-brand" href=""><img src="../images/kotesh1.jpg" alt="Dispute Bills">
+        
+     <a class="navbar-brand texthead" href="#"><p class="headfontsize" style="color: #ff6600;">PRABHAVATHI BLISS-01</p></a>
+       
+        <a class="navbar-brand navbar-right rightimage" href=""><img src="../images/kotesh2.jpg"></a>
+       
+      
+       </div>
+  </div>
+  
+ 
+</div>
+<div class="" style="padding-top:8em;position:fixed;right:0;left:0;overflow:visible;">
+<div class="navbar navbar-inverse navbar-static-top" role="navigation"> 
+  <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+  </div>
+  
+<div id="navbar3" class="navbar-collapse collapse" style="padding-left:6em;">
+        <ul class="nav nav-justified">
+          <li class="active tabscolor"><a href="#" class="tabscolor"> Home</a></li>
+          <li><a ui-sref=".about" class="tabscolor">About</a></li>
+          <li><a ui-sref=".contact" class="tabscolor">Contact</a></li>
+          <li><a class="tabscolor">welcome&nbsp&nbsp&nbsp {{username}}</a></li>
+          <li><a ng-click="logout();" class="btn btn-primary btn-sm">Logout</a></li>
+          
+          
+        </ul>
+
+      </div>
+</div>
+
+</div>
+</div>
+<div  style="padding-top:11.4em;">
+
+<!--here navbar end  -->
+<div class="smartnavpadding"></div>
+
+<div class="row"><!-- row start-->
+  <div class="col-sm-2" style="border:1px solid green;">
+  <!-- here menu start-->
+
+<div class="nav-side-menu">
+    <div class="brand">Brand Logo</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                  <a >
+                  <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                  </a>
+                </li>
+
+                <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                  <a ><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="products">
+                    <li class="active"><a >CSS3 Animation</a></li>
+                    <li><a >General</a></li>
+                    <li><a >Buttons</a></li>
+                    <li><a >Tabs & Accordions</a></li>
+                    <li><a >Typography</a></li>
+                    <li><a >FontAwesome</a></li>
+                    <li><a >Slider</a></li>
+                    <li><a >Panels</a></li>
+                    <li><a >Widgets</a></li>
+                    <li><a >Bootstrap Model</a></li>
+                </ul>
+
+
+                <li data-toggle="collapse" data-target="#service" class="collapsed">
+                  <a><i class="fa fa-globe fa-lg"></i> Apartments <span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="service">
+              <li><a ui-sref=".allapartments">ALL</a></li>
+              <li><a ui-sref=".blocka">BLOCK-A</a></li>
+              <li><a ui-sref='.blockb'>BLOCK_B</a></li>
+              <li><a ui-sref=".blockc">BLOCK-C</a></li>
+                </ul>
+
+
+                <li data-toggle="collapse" data-target="#new" class="collapsed">
+                  <a ><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="new">
+                  <li>New New 1</li>
+                  <li>New New 2</li>
+                  <li>New New 3</li>
+                </ul>
+
+
+                 <li>
+                  <a >
+                  <i class="fa fa-user fa-lg"></i> Profile
+                  </a>
+                  </li>
+
+                 <li>
+                  <a >
+                  <i class="fa fa-users fa-lg"></i> Users
+                  </a>
+                </li>
+            </ul>
+     </div>
+</div>
+
+
+    <!-- here end menu-->
+  </div><!--Here slide menu row end -->
+  <div class="col-sm-9 col-md-10 affix-content">
+<div ui-view>
+</div>
+  </div>
+</div>
+</div>
+
+

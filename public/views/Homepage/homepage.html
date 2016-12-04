@@ -1,0 +1,432 @@
+<style>
+      
+
+/* basic stylings ------------------------------------------ */
+
+.panalstyle{
+  width: 106%;padding:0px;margin-left: -15px;
+
+}
+
+.container      { 
+  font-family:'Roboto';
+  width:600px; 
+  margin:30px auto 0; 
+  display:block; 
+  background:#FFF;
+  padding:10px 50px 50px;
+}
+h2       { 
+  text-align:center; 
+  margin-bottom:50px; 
+}
+h2 small { 
+  font-weight:normal; 
+  color:#888; 
+  display:block; 
+}
+/* */
+#footer {
+  position: absolute;
+  width:98%;
+  height:7.26em;
+  margin-left: -1em;
+  width: 100%;
+  padding-top: 1em;
+  background: 
+  /* color overlay */ 
+    linear-gradient(
+      rgba(0,0,0,.0001), 
+     rgba(0, 0, 0, 0.45)
+    ),
+    /* image to overlay */
+    url(http://images.cdn.fotopedia.com/_avPIZmqM3w-7z161LH_268-hd.jpg);
+  
+  
+  /* Set the fixed height of the footer here */
+ 
+  
+}
+/* form starting stylings ------------------------------- */
+.group            { 
+  position:relative; 
+  margin-bottom:45px; 
+}
+input               {
+  font-size:14px;
+  padding:2px 5px 8px 1px;/* <!--2px 5px 8px 1px  10px 10px 10px 5px--> */
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus         { outline:none; }
+
+/* LABEL ======================================= */
+label                {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label        {
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar    { position:relative; display:block; width:300px; }
+.bar:before, .bar:after     {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}
+    </style>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top navbarhight" role="navigation">  
+  
+  <div class="navbar-header">
+     <div class="navbar-header">
+      <a class="navbar-brand" href=""><img src="../images/kotesh1.jpg" alt="Dispute Bills">
+        
+     <a class="navbar-brand texthead" href="#"><p class="headfontsize" style="color: #ff6600;">PRABHAVATHI BLISS-01</p></a>
+       
+        <a class="navbar-brand navbar-right rightimage" href=""><img src="../images/kotesh2.jpg"></a>
+     </div>
+  </div>
+</div>
+
+<p style="padding-top:7.6em;"></p>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-6">
+    
+    <div class="panel-group" style="margin-left:-30px;">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><center>Notice Board</center></div>
+      <div class="panel-body">
+      <marquee direction="down" scrolldelay="350" style="height:13.9em;">
+                   <ul ng-repeat="item in allItems">
+                    <li>{{item.news}}</li>
+                   </ul>
+              </marquee> 
+      </div>
+    </div>
+</div>
+
+  </div>
+  <div class="col-sm-6" >
+    
+    <div class="panel-group" style="margin-left:-29px;width:58em;">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><center>Login </center></div>
+      <div class="panel-body">
+
+
+      <!-- <div class="alert alert-danger" ng-show="showMe">
+    <strong>User name / Password doesn't match</strong> 
+    Or <b>Please Wait for Admin Approvals</b>
+  </div>-->
+      <div class="row">
+         <div class="col-sm-9">
+          <form name="form" ng-submit="login(username,password)" role="form" style="padding-top:1em;">
+
+  <div class="group">      
+      <input type="email" ng-model="username" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Email</label>
+    </div>
+    
+    <div class="group">      
+      <input type="password" ng-model="password" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Password</label>
+    </div>
+      <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-primary">Login</button>
+            
+            <a href="" class="btn btn-link" ng-click='open();'>Register</a>
+            <a href="" class="btn btn-link" ng-click="Reset();">Forgot Password</a>
+
+        </div>
+  </form>        
+         </div><!-- Login template-->
+         <div class="col-sm-3">
+           <div class="alert alert-danger" ng-show="showMe">
+              <strong>User name / Password doesn't match</strong> 
+              Or <b>Please Wait for Admin Approvals</b>
+            </div>
+         </div><!-- Error message-->
+        
+      </div>
+
+ 
+
+
+
+      </div>
+    </div>
+</div>
+
+  </div><!-- row closed here -->
+
+
+
+ <div class="row"><!-- -->
+  <div class="col-sm-4">
+
+  <div class="panel panel-success" style="
+    margin-left: -14px;
+    margin-top: -1.4em;
+    height: 22em;
+">
+      <div class="panel-heading">Important Updates</div>
+      <div class="panel-body" >Content1</div>
+    </div>
+    
+
+    
+  </div>
+  <div class="col-sm-4">
+  
+  <div class="panel panel-success" style="
+    margin-top: -1.4em;
+    margin-left: -2.1em;
+    height: 22em;
+">
+      <div class="panel-heading">Flats for rent/lease/sale</div>
+      <div class="panel-body" >Content2</div>
+    </div>
+    
+  
+  </div>
+ <div class="col-sm-4" >
+ 
+  <div class="panel panel-success" style="
+    margin-top: -1.4em;
+    margin-left: -2.2em;
+    height: 22em;
+    width: 39em;
+">
+      <div class="panel-heading">Re-Sale Blog</div>
+      <div class="panel-body" >Content3</div>
+    </div>
+    
+  </div>
+    
+  </div>  <!-- row closed here -->
+
+<div class="row"><!--Footer  -->
+ <div class="col-sm-3">
+   <p>Follow us on</p>
+         <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" rel="publisher"
+                       href="https://plus.google.com/+ahmshahnuralam">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher"
+                       href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                        <i class="fa fa-behance"></i>
+          </a>
+ </div>
+ <div class="col-sm-6">
+   <p>@Copy Right</p>
+ </div>
+ <div class="col-sm-3">
+   <p>Contact Us</p>
+ </div>
+  
+</div><!-- Footer end here-->
+</div><!-- body closed here-->
+ 
+
+
+
+
+<!-- User resgistration templates -->
+
+<script type="text/ng-template" id="myModalContent.html">
+
+        <div class="modal-header">
+            <h3 class="modal-title"><b><center>User Registration</center></b></h3>
+        </div>
+         <div class='modal-body'>
+         <form name = "modalForm" class="" role="form">
+         <div class="form-group" ng-class="{ 'has-error': modalForm.modalInput.$invalid }">
+        <input name="modalInput" ng-model = "user.firstname" class="form-control" type = "text" placeholder="First Name" title="name" required/>
+        </div>
+         <div class="form-group" ng-class="{ 'has-error': modalForm.secondname.$invalid }">
+         <input name="secondname" ng-model = "user.secondname" class="form-control" type = "text" placeholder="Second Name" title="name" required/>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': modalForm.apartmentname.$invalid }">
+          <div class="row">
+          <label class="control-label col-sm-4">Select Apartment</label>
+          <div class="col-sm-4">
+            <select  class="form-control" ng-init="user.apartmentname = names[0]"  ng-model="user.apartmentname" class="ng-valid ng-dirty" ng-options="item for item in names"></select>
+          </div>
+          <div class="col-sm-4">
+            
+          </div>
+         </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="row">
+          <label class="control-label col-sm-4">Select block </label>
+          <div class="col-sm-3">
+          <select class="form-control" ng-init="user.block = blocks[0]"  ng-model="selectedblock" class="ng-valid ng-dirty" ng-options="item.name for item in blocks" ng-change="changefloor(selectedblock)"></select>
+          </div>
+          <div class="col-sm-5">
+            
+          </div>
+          </div>
+        </div>
+   
+
+        <div class="form-group">
+          <div class="row">
+          <label class="control-label col-sm-4">Residency Type </label>
+          <div class="col-sm-3">
+          <select class="form-control" ng-init=""  ng-model="user.residencytype" class="ng-valid ng-dirty" ng-options="item for item in residency"></select>
+          </div>
+          <div class="col-sm-5">
+            
+          </div>
+          </div>
+
+          </div>
+          <div class="row">
+        <div class="col-sm-6">
+        <div class="col-sm-2"><label for="flotnumber">Floor</label></div>
+        <div class="col-sm-10">
+          <div class="form-group" ng-class="{ 'has-error': modalForm.floor.$invalid }">
+          
+          <select name="floor" ng-model = "floorselected" class="form-control" type = "flotnumber" placeholder="Enter Floor Number" title=" floornumber" ng-options="md.floornumber for md in floors" ng-change="flatchange(floorselected)"></select>
+          </div>
+          </div>
+        </div>
+       
+        <div class="col-sm-6">
+        <div class="col-sm-2"><label for="flotnumber">Flat</label></div>
+        <div class="col-sm-10">        
+        <div class="form-group" ng-class="{ 'has-error': modalForm.flotnumber.$invalid }">
+        
+          <select name="flotnumber" ng-model = "selectedflat" class="form-control" type = "flotnumber" placeholder="Enter Flot Number" title=" flotnumber" ng-options="md.flatnumber for md in flats" ng-change="flatchagevalue(selectedflat)"></select>
+          </div>
+          </div>
+
+          
+        </div>
+          </div>
+
+
+          <div class="form-group" ng-show="user.residencytype==residency[1]">
+          <input name="ownername" ng-model = "user.ownername" class="form-control" type = "ownername" placeholder="Please Enter your Owner Name" title=" ownername"/>
+          </div>
+       
+          <div class="form-group" ng-class="{ 'has-error': modalForm.email.$invalid }">
+          <input name="email" ng-model = "user.email" class="form-control" type="email" placeholder="Email" title=" email" required />
+          <span ng-show="emailerror">Email already exist</span>
+
+          </div>
+         
+
+          <div class="form-group" ng-class="{ 'has-error': modalForm.password.$invalid }">
+          <input name="password" ng-model = "user.password" class="form-control" type = "password" placeholder="Password" title=" password" required/>
+          </div>
+          <div class="form-group" ng-class="{ 'has-error': modalForm.repassword.$invalid }">
+          <input name="repassword" ng-model = "password1" class="form-control" type = "password" placeholder="Re-Password" title=" password" required/>
+          <label ng-show="(user.password!==password1)">password doesnt match</label>
+          </div>
+          <div class="form-group" ng-class="{ 'has-error': modalForm.contact.$invalid }">
+          <input name="contact" ng-model = "user.contact" class="form-control" type = "text" placeholder="Conatct Number(excluding +91)" title=" Contact Number" required/>
+          </div>
+          <div class="form-group" ng-class="{ 'has-error': modalForm.address.$invalid }">
+          <textarea name="address" rows="3" ng-model = "user.address" class="form-control" type = "text" placeholder="address" title="address" required></textarea>
+          </div>
+
+
+
+
+
+        </form>
+      </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-disabled="modalForm.$invalid" ng-class="{ 'disabled': modalForm.$invalid }" ng-click="ok()">Register</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </script>
+
+
+
+
