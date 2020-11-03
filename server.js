@@ -19,15 +19,15 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
   process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
   process.env.OPENSHIFT_APP_NAME;
 }
+
 mongoose.connect('mongodb://'+connection_string);
 var db1= mongoose.connection;
 db1.on('error', console.error.bind(console, 'connection error:'));
 db1.once('open', function() {
   console.log("Data base connected..");
 }); 
+
 app.use(express.static(__dirname + '/public'));
-
-
 require('./Serverside/user.js')(app);
 require('./Serverside/books.js')(app);
 require('./Serverside/transactions.js')(app);
